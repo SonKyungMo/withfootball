@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments.html :: head"></head>
+<body>
+<nav th:replace="fragments.html :: main-nav"></nav>
+<div th:replace="fragments.html :: community-banner"></div>
+<div class="container">
+    <div th:replace="fragments.html :: community-info"></div>
+    <div th:replace="fragments.html :: community-menu(communityMenu='notice')"></div>
+
+    <div class="col-10 px-0 row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table th:if="${notices.size() == 0}" class="table table-hover">
+                <tr>작성된 공지사항이 없습니다.</tr>
+            </table>
+            <table th:if="${notices.size() > 0}" class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">공지사항 제목</th>
+                    <th scope="col">작성 시간</th>
+                </tr>
+                </thead>
+                <tbody th:each="notice: ${notices}">
+                <tr>
+                    <th scope="row" th:text="${noticeStat.count}">1</th>
+                    <td>
+                        <a href="#" th:href="@{'/community/' + ${community.path} + '/notice/' + ${notice.id}}"
+                           th:text="${notice.title}">Title</a>
+                    </td>
+                    <td>
+                        <span class="date-weekday-time" th:text="${notice.createdDateTime}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <span sec:authorize="isAuthenticated()"
+                  th:if="${community.isManager(#authentication.principal)}">
+                    <a class="btn btn-outline-primary" th:href="@{'/community/' + ${community.path} + '/new-notice'}">
+                        <i class="fa fa-plus fa-lg"></i> 공지작성
+                    </a>
+                </span>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments.html :: footer"></div>
+<script th:replace="fragments.html :: tooltip"></script>
+<script th:replace="fragments.html :: date-time"></script>
+</body>
+</html>
