@@ -1,5 +1,6 @@
 package com.demo.withfootball.modules.notification;
 
+import com.demo.withfootball.modules.note.Note;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,4 +18,6 @@ public class NotificationService {
         notifications.forEach(n -> n.setChecked(true));
         notificationRepository.saveAll(notifications);
     }
+
+
 }

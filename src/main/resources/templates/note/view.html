@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body>
+<nav th:replace="fragments.html :: main-nav"></nav>
+<div class="container">
+    <div class="row px-3 justify-content-center">
+        <div class="col-10 pt-3">
+                <span>
+                    <span class="h2" th:text="${note.title}">쪽지 제목</span>
+                    <br>
+                    <p>보낸 사람: <span th:text="${note.sender.getNickname()}"></span></p>
+                    <p>보낸 시간: <span th:text="${note.createdDateTime}"></span></p>
+               </span>
+            <hr>
+
+        </div>
+        <div class="row px-3 justify-content-center">
+            <div class="col-10 pt-3">
+                <dt class="font-weight-light"></dt>
+                <dd th:utext="${note.contents}"></dd>
+            </div>
+
+            <div align="right">
+                <a class="btn btn-outline-primary btn-sm my-1"
+                   th:href="@{'/send-note/'}">
+                    쪽지 답장
+                </a>
+            </div>
+
+        </div>
+        <div th:replace="fragments.html :: footer"></div>
+    </div>
+</div>
+<script th:replace="fragments.html :: tooltip"></script>
+<script th:replace="fragments.html :: date-time"></script>
+</body>
+</html>

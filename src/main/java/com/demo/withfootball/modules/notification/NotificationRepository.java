@@ -1,6 +1,7 @@
 package com.demo.withfootball.modules.notification;
 
 import com.demo.withfootball.modules.account.Account;
+import com.demo.withfootball.modules.note.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

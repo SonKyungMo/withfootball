@@ -70,7 +70,7 @@ public class EnrollmentEventListener {
     private void createNotification(EnrollmentEvent enrollmentEvent, Account account, Event event, Community community) {
         Notification notification = new Notification();
         notification.setTitle(community.getTitle() + " / " + event.getTitle());
-        notification.setLink("/community" + community.getEncodedPath() + "/events/" + event.getId());
+        notification.setLink("/community/" + community.getEncodedPath() + "/events/" + event.getId());
         notification.setChecked(false);
         notification.setCreatedDateTime(LocalDateTime.now());
         notification.setMessage(enrollmentEvent.getMessage());

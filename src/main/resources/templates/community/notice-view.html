@@ -10,11 +10,12 @@
 
     <div class="row px-3 justify-content-center">
         <div class="col-10 pt-3">
-                <span class="h2">
-                    <span th:text="${notice.title}">커뮤니티 이름</span>
+                <span>
+                    <span class = "h2" th:text="${notice.title}">공지사항 제목</span>
+                    <br>
+                    <span th:text="${notice.createdDateTime}"></span>
                </span>
             <hr>
-            <span class=th:text="${notice.createdDateTime}"></span>
 
         </div>
         <div class="row px-3 justify-content-center">

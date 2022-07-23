@@ -548,7 +548,7 @@
         $(function () {
             $('.editor').summernote({
                 fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Noto Sans KR', 'Merriweather'],
-                placeholder: '그룹의 선호하는 팀, 일정, 진행 방식, 추구하는 분위기 등 그룹에 대해 자세히 적어 주세요.',
+                placeholder: '내용을 입력하세요.',
                 tabsize: 2,
                 height: 300
             });
@@ -852,7 +852,8 @@
             <small class="text-muted" th:text="${noti.title}">Noti title</small>
             <small class="fromNow text-muted" th:text="${noti.createdDateTime}">3 days ago</small>
         </div>
-        <p th:text="${noti.message}" class="text-left mb-0 mt-1">message</p>
+        <p th:text="${noti.message}" class="text-left mb-0 mt-1">
+        </p>
     </a>
 </ul>
 

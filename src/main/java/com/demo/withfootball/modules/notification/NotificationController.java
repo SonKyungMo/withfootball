@@ -50,12 +50,14 @@ public class NotificationController {
         List<Notification> eventEnrollmentNotifications = new ArrayList<>();
         List<Notification> watchingCommunityNotifications = new ArrayList<>();
         List<Notification> newCommunityNotices = new ArrayList<>();
+        List<Notification> newNote = new ArrayList<>();
         for (var notification : notifications) {
             switch (notification.getNotificationType()) {
                 case COMMUNITY_CREATED: newCommunityNotifications.add(notification); break;
                 case EVENT_ENROLLMENT: eventEnrollmentNotifications.add(notification); break;
                 case COMMUNITY_UPDATED: watchingCommunityNotifications.add(notification); break;
                 case NOTICE_UPDATE: newCommunityNotices.add(notification); break;
+                case NOTE: newNote.add(notification); break;
             }
         }
 
@@ -66,6 +68,8 @@ public class NotificationController {
         model.addAttribute("eventEnrollmentNotifications", eventEnrollmentNotifications);
         model.addAttribute("watchingCommunityNotifications", watchingCommunityNotifications);
         model.addAttribute("newCommunityNotices", newCommunityNotices);
+        model.addAttribute("newNote", newNote);
+
     }
 
 }
