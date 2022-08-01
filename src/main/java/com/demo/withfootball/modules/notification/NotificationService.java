@@ -19,5 +19,4 @@ public class NotificationService {
         notificationRepository.saveAll(notifications);
     }
 
-
 }

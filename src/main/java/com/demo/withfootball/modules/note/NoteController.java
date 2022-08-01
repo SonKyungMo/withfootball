@@ -3,13 +3,8 @@ package com.demo.withfootball.modules.note;
 import com.demo.withfootball.modules.account.Account;
 import com.demo.withfootball.modules.account.AccountRepository;
 import com.demo.withfootball.modules.account.CurrentAccount;
-import com.demo.withfootball.modules.community.Community;
-import com.demo.withfootball.modules.event.Event;
 import com.demo.withfootball.modules.note.form.NoteForm;
 import com.demo.withfootball.modules.note.validator.NoteValidator;
-import com.demo.withfootball.modules.notification.Notification;
-import com.demo.withfootball.modules.notification.NotificationRepository;
-import com.demo.withfootball.modules.notification.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -51,13 +46,14 @@ public class NoteController {
             return "/send-note";
         }
         noteService.createNote(modelMapper.map(noteForm, Note.class), sender, rec);
-        return "/send-note";
+        return "index-after-login";
     }
 
     @GetMapping("/note/{id}")
     public String getNote(@CurrentAccount Account account, @PathVariable Long id, Model model) {
+        Note note = noteService.getNoteToReceiver(account, id);
         model.addAttribute(account);
-        model.addAttribute(noteRepository.findById(id).orElseThrow());
+        model.addAttribute(note);
         return "note/view";
     }
 
